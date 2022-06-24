@@ -90,14 +90,12 @@ command = ElasticWheneverHelper::Command.new(
   schedule_file: schedule_file
 ).to_s
 
-# FIXME: 動作確認のためコマンド文字列を標準出力
 puts 'elastic whenever command:'
 puts command
-puts 'elastic whenever action end.'
 
-# if system(command)
-#   puts 'elastic_whenever completed.'
-# else
-#   puts "elastic_whenever failed. exist code: #{$?}"
-#   exit $?
-# end
+if system(command)
+  puts 'elastic_whenever completed.'
+else
+  puts "elastic_whenever failed. exist code: #{$?}"
+  exit $?
+end
