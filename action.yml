@@ -1,0 +1,20 @@
+name: 'Execute Elastic Whenever'
+description: 'Execute Elastic Whenever'
+inputs:
+  app:
+    description: 'application name'
+    required: true
+  env:
+    description: 'production or staging'
+    required: true
+  file:
+    description: 'schedule file, default: config/schedule.rb'
+    required: true
+    default: 'config/schedule.rb'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.app }}
+    - ${{ inputs.env }}
+    - ${{ inputs.file }}
