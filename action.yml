@@ -15,4 +15,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.app-name }}
+    - ${{ inputs.environment }}
     - ${{ inputs.schedule-file }}
