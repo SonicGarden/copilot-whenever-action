@@ -1,4 +1,4 @@
-# elastic-whenever-action
+# copilot-whenever-action
 
 このアクションは、AWS Copilot によりデプロイされた Rails アプリケーションに対し、[elastic_whenever](https://github.com/wata727/elastic_whenever) を実行します。
 
