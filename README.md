@@ -20,7 +20,7 @@ Schedule file, default `config/schedule.rb`.
 ## 使用例
 
 ```yml
-uses: SonicGarden/elastic-whenever-action@develop
+uses: SonicGarden/copilot-whenever-action@develop
 with:
   app-name: 'your-app-name'
   environment: 'production'
