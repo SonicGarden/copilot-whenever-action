@@ -83,9 +83,9 @@ module ElasticWheneverHelper
   end
 end
 
-app_name = $1
-environment = $2
-schedule_file = $3
+app_name = ARGV[0]
+environment = ARGV[1]
+schedule_file = ARGV[2]
 
 cloud_formation_stack = ElasticWheneverHelper::CloudformationStack.new(
   app: app_name,
