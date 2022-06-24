@@ -6,13 +6,13 @@
 
 ## Inputs
 
-**Required** app-name:
+**Required** app:
 Name of the application.
 
-**Required** environment:
+**Required** env:
 Name of the environment.
 
-**Required** schedule-file:
+**Required** file:
 Schedule file, default `config/schedule.rb`.
 
 ## Outputs
@@ -22,6 +22,6 @@ Schedule file, default `config/schedule.rb`.
 ```yml
 uses: SonicGarden/copilot-whenever-action@develop
 with:
-  app-name: 'your-app-name'
-  environment: 'production'
+  app: 'your-app-name'
+  env: 'production'
 ```
