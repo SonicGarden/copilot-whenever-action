@@ -8,9 +8,9 @@ module ElasticWheneverHelper
   class Command
     attr_reader :stack
 
-    def initialize(stack, options = {})
+    def initialize(stack, schedule_file:)
       @stack = stack
-      @options = options
+      @schedule_file = schedule_file
     end
 
     def to_s
@@ -22,7 +22,7 @@ module ElasticWheneverHelper
     def command_options
       stack_name = stack[:name]
 
-      options = {
+      {
         '--cluster': stack[:cluster_id],
         '--task-definition': "#{stack_name}-rails",
         '--container': 'rails',
@@ -30,16 +30,9 @@ module ElasticWheneverHelper
         '--security-groups': stack[:security_groups],
         '--subnets': stack[:public_subnets],
         '--assign-public-ip': 'ENABLED',
-        '--update': 'rails'
+        '--update': 'rails',
+        '--file': @schedule_file
       }
-
-      %w[file].each do |option_name|
-        if @options[option_name].present?
-          options[option_name] = @options[option_name]
-        end
-      end
-
-      options
     end
   end
 
@@ -94,7 +87,7 @@ cloud_formation_stack = ElasticWheneverHelper::CloudformationStack.new(
 
 command = ElasticWheneverHelper::Command.new(
   cloud_formation_stack,
-  file: schedule_file
+  schedule_file: schedule_file
 ).to_s
 
 # FIXME: 動作確認のためコマンド文字列を標準出力
