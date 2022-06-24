@@ -2,8 +2,8 @@ FROM ruby:2.7
 
 ENV ACTION_PATH /action
 
-RUN mkdir -p $ACTION_PATH
 RUN gem install bundler
+RUN mkdir -p $ACTION_PATH
 
 COPY . $ACTION_PATH
 
